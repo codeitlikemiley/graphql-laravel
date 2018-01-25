@@ -95,7 +95,10 @@ class GraphQLServiceProvider extends ServiceProvider
     {
         $this->registerGraphQL();
 
-        $this->registerConsole();
+        
+        if (app()->environment('local', 'staging')) {
+            $this->registerConsole();
+        }
     }
 
     public function registerGraphQL()
